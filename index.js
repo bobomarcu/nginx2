@@ -3,12 +3,13 @@ const app = express()
 
 function getReq(req,res,next){
 
-    console.log({'Method': req.method ,'url': req.originalUrl, 'IP': req.socket.remoteAddress })
+    console.log({'Method': req.method ,'url': req.originalUrl, 'IP': req.ip })
     next()
 
 }
 
 app.use(getReq);
+app.set('trust proxy', true)
 
 app.get('/',(req,res)=>{
 
