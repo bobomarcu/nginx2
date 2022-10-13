@@ -11,7 +11,11 @@ function getReq(req,res,next){
 
 app.use(getReq);
 app.use(express.json())
-app.use(cors())
+app.use(cors(
+    {
+        origin: '192.168.7.150'
+    }
+))
 app.set('trust proxy', true)
 
 app.get('/',(req,res)=>{
