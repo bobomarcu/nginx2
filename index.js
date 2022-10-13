@@ -3,7 +3,7 @@ const app = express()
 
 function getReq(req,res,next){
 
-    console.log({'Method': req.method ,'url': req.originalUrl, 'IP': req.ip })
+    console.log({'Method': req.method ,'url': req.originalUrl, 'IP': req.headers['x-forwarded-for'] || req.socket.remoteAddress })
     next()
 
 }
