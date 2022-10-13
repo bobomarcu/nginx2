@@ -4,7 +4,6 @@ const app = express()
 app.get('/',(req,res)=>{
 
     res.send('aplicatia 2')
-    console.log(req)
 
 })
 
