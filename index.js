@@ -3,7 +3,7 @@ const app = express()
 
 function getReq(req,res,next){
 
-    console.log({'Method': req.method , 'IP': req.ip })
+    console.log({'Method': req.method ,'url': req.originalUrl, 'IP': req.socket.remoteAddress })
     next()
 
 }
