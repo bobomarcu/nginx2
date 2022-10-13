@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
 function getReq(req,res,next){
@@ -9,6 +10,8 @@ function getReq(req,res,next){
 }
 
 app.use(getReq);
+app.use(express.json())
+app.use(cors())
 app.set('trust proxy', true)
 
 app.get('/',(req,res)=>{
