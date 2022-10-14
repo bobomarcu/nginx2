@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
+const db = require('./db')
 
 function getReq(req,res,next){
 
@@ -39,7 +40,14 @@ app.get('/api/:procesor-:os-:ip-:numeAdmin',(req,res)=>{
 
     }
 
-    res.send(pc)
+    db.query('SELECT * FROM user_data', (err,result)=>{
+
+        if (err) throw err
+        res.send(pc + result[0])
+
+    })
+
+   
 
 } )
 
