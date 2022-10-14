@@ -1,6 +1,10 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
+const bcrypt = require('bcrypt')
+const saltRounds = 10;
+
+
 const db = require('./db')
 
 function getReq(req,res,next){
