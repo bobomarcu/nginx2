@@ -31,19 +31,13 @@ app.get('/register/:username-:password',(req,res)=>{
     const username = req.params.username
     const password = req.params.password
 
-    bcrypt.hash(password, saltRounds, function(err, hash) {
 
-        if (err) throw err
+    db.query(`INSERT INTO (id,username,password) VALUES (0,${username},${password})`,(err,result)=>{
 
-        db.query(`INSERT INTO (id,username,password) VALUES (0,${username},${hash})`,(err,result)=>{
+        if(err) throw err
+        res.send('ok')
 
-            if(err) throw err
-            res.send('ok')
-
-        })
-
-    });
-
+    })
 
 })
 
