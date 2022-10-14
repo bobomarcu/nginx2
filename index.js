@@ -23,6 +23,24 @@ app.get('/',(req,res)=>{
 
 })
 
+app.get('/register/:username-:password',(req,res)=>{
+
+    const username = req.params.username
+    const password = req.params.password
+
+    bcrypt.hash(password, saltRounds, function(err, hash) {
+
+        db.query(`INSERT INTO (id,username,password) VALUES (0,${username},${hash})`,(err,result)=>{
+
+            if(err) throw err
+            res.send('ok')
+
+        })
+
+    });
+
+
+})
 
 app.get('/api/:procesor-:os-:ip-:numeAdmin',(req,res)=>{
 
