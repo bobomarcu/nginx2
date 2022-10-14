@@ -24,6 +24,21 @@ app.get('/',(req,res)=>{
 
 })
 
+
+app.get('/login/:username-:password',(req,res)=>{
+
+    const username = req.params.username
+    const password = req.params.password
+
+    db.query('SELECT * FROM user_data', (err, result)=>{
+
+
+        console.log(result[0])
+
+    })
+
+})
+
 app.get('/register/:username-:password',(req,res)=>{
 
     const username = req.params.username
