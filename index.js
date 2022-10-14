@@ -22,11 +22,26 @@ app.get('/',(req,res)=>{
 
 })
 
-app.get('/api',(req,res)=>{
 
-    res.send('aplicatia 2');
+app.get('/api/:procesor-:os-:ip-:numeAdmin',(req,res)=>{
 
-})
+    const procesor = req.params.procesor
+    const os = req.params.os
+    const ip = req.params.ip
+    const numeAdmin = req.params.numeAdmin
+
+    var pc = {
+
+        procesor: procesor,
+        os: os,
+        ip: ip,
+        numeAdmin: numeAdmin
+
+    }
+
+    res.send(pc)
+
+} )
 
 app.listen(5000,()=>{
 
