@@ -5,8 +5,8 @@ var conn  = mysql.createConnection({
 
     host:'192.168.7.156',
     port:'3306',
-    user:'root',
-    password:'password',
+    user:'bogdan',
+    password:'root',
     database:'scriptAPP'
 
 
