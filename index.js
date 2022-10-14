@@ -30,7 +30,7 @@ app.get('/register/:username-:password',(req,res)=>{
     const password = req.params.password
 
 
-    db.query(`INSERT INTO (id,username,password) VALUES (0,${username},${password})`,(err,result)=>{
+    db.query(`INSERT INTO (id,username,password) VALUES (0,'${username}','${password}')`,(err,result)=>{
 
         if(err) throw err
         res.send('ok')
