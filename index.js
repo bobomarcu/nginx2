@@ -38,8 +38,8 @@ app.get('/login/:username-:password',(req,res)=>{
 
                 if (result[0].password == password){
 
-                        console.log({id: result.id , username: result.username})
-                        res.send({id: result.id , username: result.username})
+                        console.log({id: result[0].id , username: result[0].username})
+                        res.send({id: result[0].id , username: result[0].username})
 
                 }
                 else{
