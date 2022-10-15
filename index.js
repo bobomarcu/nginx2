@@ -97,7 +97,8 @@ app.get('/get-pc-data',(req,res)=>{
                         mem:result[i].mem,
                         cpu:result[i].cpu,
                         host:result[i].host,
-                        gpu:result[i].gpu
+                        gpu:result[i].gpu,
+                        ip:result[i].ip
 
                 }
                 
