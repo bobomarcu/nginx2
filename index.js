@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const bodyParser = require('body-parser');
 const app = express()
 const db = require('./db')
 
@@ -10,6 +11,10 @@ function getReq(req,res,next){
     next()
 
 }
+
+
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
 
 app.use(getReq);
 app.use(express.json())
@@ -72,31 +77,36 @@ app.get('/register/:username-:password',(req,res)=>{
 
 })
 
-app.get('/api/:procesor-:os-:ip-:numeAdmin',(req,res)=>{
+app.post('/pc-data',(req,res)=>{
 
-    const procesor = req.params.procesor
-    const os = req.params.os
-    const ip = req.params.ip
-    const numeAdmin = req.params.numeAdmin
+    // const procesor = req.params.procesor
+    // const os = req.params.os
+    // const ip = req.params.ip
+    // const numeAdmin = req.params.numeAdmin
 
-    var pc = {
+    const user = req.body.user;
+    const mem = req.body.mem;
+    const cpu = req.body.cpu;
+    const host = req.body.host;
+    const gpu = req.body.gpu;
+    // var pc = {
 
-        procesor: procesor,
-        os: os,
-        ip: ip,
-        numeAdmin: numeAdmin
+    //     procesor: procesor,
+    //     os: os,
+    //     ip: ip,
+    //     numeAdmin: numeAdmin
 
-    }
+    // }
 
-    db.query('SELECT * FROM user_data', (err,result)=>{
+    res.send({user:user,mem:mem,cpu:cpu,host:host,gpu:gpu});
+    // db.query('SELECT * FROM user_data', (err,result)=>{
 
-        if (err) throw err
-        console.log(result[0])
-        res.send(pc + result[0])
+    //     if (err) throw err
+    //     console.log(result[0])
+    //     res.send(pc + result[0])
 
-    })
+    // })
 
-   
 
 } )
 
