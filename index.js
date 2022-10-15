@@ -89,6 +89,7 @@ app.post('/pc-data',(req,res)=>{
     const cpu = req.body.cpu;
     const host = req.body.host;
     const gpu = req.body.gpu;
+
     // var pc = {
 
     //     procesor: procesor,
@@ -99,13 +100,6 @@ app.post('/pc-data',(req,res)=>{
     // }
 
     res.send({user:user,mem:mem,cpu:cpu,host:host,gpu:gpu});
-    // db.query('SELECT * FROM user_data', (err,result)=>{
-
-    //     if (err) throw err
-    //     console.log(result[0])
-    //     res.send(pc + result[0])
-
-    // })
 
 
 } )
