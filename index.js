@@ -30,6 +30,8 @@ app.get('/',(req,res)=>{
 })
 
 
+
+
 app.get('/login/:username-:password',(req,res)=>{
 
     const username = req.params.username
@@ -72,6 +74,43 @@ app.get('/register/:username-:password',(req,res)=>{
 
         if(err) throw err
         res.send('ok')
+
+    })
+
+})
+
+app.get('/get-pc-data',(req,res)=>{
+
+    db.query('SELECT * FROM pcData',(err,result)=>{
+        
+        if (err) res.status(500).send('Something went wrong!')
+        if(result.length>0){
+
+            var pcArray = [] 
+
+            for (var i = 0 ; i < result.length ; i++){
+
+                var data = {
+
+                        id:result[i].id,
+                        user:result[i].user,
+                        mem:result[i].mem,
+                        cpu:result[i].cpu,
+                        host:result[i].host,
+                        gpu:result[i].gpu
+
+                }
+                
+                pcArray.push(data)
+
+            }
+
+            res.send(pcArray)
+
+        }
+        else{
+            res.send(208).send('No pc scanned :(')
+        }
 
     })
 
