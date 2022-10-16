@@ -131,7 +131,7 @@ app.post('/pc-data',(req,res)=>{
     const host = req.body.host;
     const gpu = req.body.gpu;
     const os = req.body.os;
-    const data = req.body.data;
+    const data = req.body.data; 
 
     // var pc = {
 
