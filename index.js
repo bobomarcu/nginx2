@@ -141,7 +141,7 @@ app.post('/pc-data',(req,res)=>{
 
     // }
 
-    db.query(`INSERT INTO pcData (id,user,mem,cpu,host,gpu) VALUES (0, '${user}', '${mem}' ,'${cpu}' ,'${host}','${gpu}' ,'${os}')`,(err , result)=>{
+    db.query(`INSERT INTO pcData (id,user,mem,cpu,host,gpu,os) VALUES (0, '${user}', '${mem}' ,'${cpu}' ,'${host}','${gpu}' ,'${os}')`,(err , result)=>{
 
         if (err) throw err;
             res.status(200).send('Scan complete');
