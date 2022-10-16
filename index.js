@@ -98,7 +98,8 @@ app.get('/get-pc-data',(req,res)=>{
                         cpu:result[i].cpu,
                         host:result[i].host,
                         gpu:result[i].gpu,
-                        ip:result[i].ip
+                        ip:result[i].ip,
+                        os:result[i].os
 
                 }
                 
@@ -129,6 +130,7 @@ app.post('/pc-data',(req,res)=>{
     const cpu = req.body.cpu;
     const host = req.body.host;
     const gpu = req.body.gpu;
+    const os = req.body.os;
 
     // var pc = {
 
@@ -139,10 +141,10 @@ app.post('/pc-data',(req,res)=>{
 
     // }
 
-    db.query(`INSERT INTO pcData (id,user,mem,cpu,host,gpu) VALUES (0, '${user}', '${mem}' ,'${cpu}' ,'${host}','${gpu}')`,(err , result)=>{
+    db.query(`INSERT INTO pcData (id,user,mem,cpu,host,gpu) VALUES (0, '${user}', '${mem}' ,'${cpu}' ,'${host}','${gpu}' ,'${os}')`,(err , result)=>{
 
         if (err) throw err;
-            res.status(200).send({user:user,mem:mem,cpu:cpu,host:host,gpu:gpu});
+            res.status(200).send('Scan complete');
 
 
     })
