@@ -85,11 +85,29 @@ app.post('/server-status' , (req,res)=>{
     const port = req.body.port
     const status = req.body.status
 
-    db.query(`INSERT INTO server (id , host , port ,status) VALUES (0 , '${host}' , '${port}' , '${status}')`,(err,result)=>{
+    db.query(`select * from server where port = '${port}' and host='${host}'`, (err,result)=>{
 
-        if (err) throw err
-        res.send('Complete :D')
-    })
+        if(err) throw err
+        if(result.length > 0){
+
+            db.query(`UPDATE server SET status='${status}' where port = '${port}' and host='${host}' ` , (err,result)=>{
+
+                if (err) throw err
+                res.send('updated\n')
+
+            })
+
+        }
+        else{
+            db.query(`INSERT INTO server (id , host , port ,status) VALUES (0 , '${host}' , '${port}' , '${status}')`,(err,result)=>{
+
+                if (err) throw err
+                res.send('Complete :D\n')
+            })
+        }
+
+
+    })    
 
 })
 
