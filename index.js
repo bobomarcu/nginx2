@@ -85,7 +85,12 @@ app.post('/server-status' , (req,res)=>{
     const port = req.body.port
     const status = req.body.status
 
-    res.send(host + " " + port + " " + status)
+    db.query(`INSERT INTO server (id , host , port ,status) VALUES (0 , '${host}' , '${port}' , '${status}')`,(err,result)=>{
+
+        if (err) throw err
+        res.send('Complete :D')
+    })
+
 })
 
 app.get('/get-pc-data',(req,res)=>{
