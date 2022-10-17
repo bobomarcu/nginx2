@@ -79,6 +79,15 @@ app.get('/register/:username-:password',(req,res)=>{
 
 })
 
+app.post('/server-status' , (req,res)=>{
+
+    const host = req.body.host
+    const port = req.body.port
+    const status = req.body.status
+
+    res.send(host + " " + port + " " + status)
+})
+
 app.get('/get-pc-data',(req,res)=>{
 
     db.query('SELECT * FROM pcData',(err,result)=>{
@@ -118,6 +127,8 @@ app.get('/get-pc-data',(req,res)=>{
     })
 
 })
+
+
 
 app.post('/pc-data',(req,res)=>{
 
