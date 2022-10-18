@@ -141,7 +141,8 @@ app.get('/get-pc-data',(req,res)=>{
 
     db.query('SELECT * FROM pcData',(err,result)=>{
         
-        if (err) res.status(500).send('Something went wrong!')
+        if (err)   throw err
+
         if(result.length>0){
 
             var pcArray = [] 
@@ -170,13 +171,12 @@ app.get('/get-pc-data',(req,res)=>{
 
         }
         else{
-            res.send(208).send('No pc scanned :(')
+            res.status(208).send('No pc scanned :(')
         }
 
     })
 
 })
-
 
 
 app.post('/pc-data',(req,res)=>{
