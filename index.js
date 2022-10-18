@@ -210,7 +210,7 @@ app.post('/pc-data',(req,res)=>{
         if(err) throw err
         if(result.length > 0){
 
-            db.query(`update pcData set user='${user}' , meme='${mem}' , cpu='${cpu}',host='${host}', gpu='${gpu}',os='${os}',data='${data}' where id=${result[0].id}`,(err ,result)=>{
+            db.query(`update pcData set user='${user}' , mem='${mem}' , cpu='${cpu}',host='${host}', gpu='${gpu}',os='${os}',data='${data}' where id=${result[0].id}`,(err ,result)=>{
 
                 if(err) throw err
                 res.status(200).send('Scan complete');
