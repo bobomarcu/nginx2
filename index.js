@@ -205,13 +205,33 @@ app.post('/pc-data',(req,res)=>{
 
     // }
 
-    db.query(`INSERT INTO pcData (id,user,mem,cpu,host,gpu,os,data) VALUES (0, '${user}', '${mem}' ,'${cpu}' ,'${host}','${gpu}' ,'${os}','${data}')`,(err , result)=>{
+    db.query(`SELECT id FROM pcData WHERE user='${user}' and host='${host}'`, (err , result )=>{
 
-        if (err) throw err;
-            res.status(200).send('Scan complete');
+        if(err) throw err
+        if(result.length > 0){
+
+            db.query(`update pcData user='${user} , meme='${mem}' , cpu='${cpu}',host='${host}', gpu='${gpu}',os='${os}',data='${data}' where id=${result[0]}`,(err ,result)=>{
+
+                if(err) throw err
+                res.status(200).send('Scan complete');
+
+            })
+
+        }
+        else{
+
+            db.query(`INSERT INTO pcData (id,user,mem,cpu,host,gpu,os,data) VALUES (0, '${user}', '${mem}' ,'${cpu}' ,'${host}','${gpu}','${os}','${data}')`,(err , result)=>{
+
+                if (err) throw err;
+        
+                res.status(200).send('Scan complete');
+        
+            })
+
+        }
 
 
-    })
+})
 
 
 } )
