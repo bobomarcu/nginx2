@@ -205,7 +205,7 @@ app.post('/pc-data',(req,res)=>{
 
     // }
 
-    db.query(`SELECT FROM pcData WHERE user='${user}' and host='${host}'`, (err , result )=>{
+    db.query(`SELECT * FROM pcData WHERE user='${user}' and host='${host}'`, (err , result )=>{
 
         if(err) throw err
         if(result.length > 0){
